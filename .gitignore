@@ -1,0 +1,21 @@
+# Jarvis
+.env
+*.log
+.venv/
+venv/
+
+# Never commit credentials
+*.key
+*.pem
+config.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/

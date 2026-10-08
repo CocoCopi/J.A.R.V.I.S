@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jarvis-termux"
+version = "0.3.0"
+description = "A voice-driven, tool-using AI assistant (Jarvis) built for Termux / Android proot."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Jarvis contributors" }]
+keywords = ["jarvis", "assistant", "termux", "android", "llm", "gemini", "nvidia-nim"]
+
+# Core is deliberately thin so it installs on a phone.
+dependencies = [
+    "requests>=2.28",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+# Gemini (text + Live voice mode)
+gemini = ["google-genai>=1.0"]
+# Pretty terminal output
+rich = ["rich>=13.0"]
+# Local mic/speaker streaming instead of the termux-api helpers
+audio = ["sounddevice>=0.4", "numpy>=1.24"]
+all = ["google-genai>=1.0", "rich>=13.0"]
+
+[project.scripts]
+jarvis = "jarvis.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["jarvis*"]
